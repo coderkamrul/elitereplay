@@ -15,7 +15,7 @@ const LanguageSwitcher = () => {
     <select
       onChange={(e) => changeLocale(e.target.value)}
       defaultValue={pathname.split('/')[1]}
-      className="border px-2 py-1 text-black fixed right-4 top-4 z-50"
+      className="border px-2 py-1 text-black fixed bg-white right-4 top-4 z-50"
     >
       <option value="en">EN</option>
       <option value="de">DE</option>
