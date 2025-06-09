@@ -79,13 +79,9 @@ export default function LandingPage() {
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F5BE2D] to-white">
               {t("title")}
             </span>
-            <br />
-            <span className="text-[#F5BE2D] drop-shadow-lg">
-              {t("subtitle")}
-            </span>
           </h1>
 
-          <p className="text-xl md:text-2xl max-w-4xl mx-auto mb-12 text-gray-200 animate-fade-in-delay">
+          <p className="text-md md:text-2xl max-w-5xl mx-auto mb-12 text-gray-200 animate-fade-in-delay">
             {t("description")}
           </p>
 
@@ -226,14 +222,13 @@ export default function LandingPage() {
                 </span>
                 <h2 className="text-4xl md:text-6xl font-bold mt-4 mb-6 relative">
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-[#F5BE2D]">
-                    Player Features
+                    {t("Features.headline")}
                   </span>
                   <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-[#F5BE2D]"></div>
                 </h2>
               </div>
               <p className="text-xl text-gray-400 max-w-3xl mx-auto mt-8">
-                Experience the future of sports highlights with our
-                revolutionary technology
+                {t("Features.description")}
               </p>
             </div>
 
@@ -271,26 +266,24 @@ export default function LandingPage() {
                   <div className="feature-content md:w-2/5 md:pl-16">
                     <div className="bg-black/40 backdrop-blur-md rounded-3xl p-8 border border-gray-800 transform md:translate-x-[-80px] hover:border-[#F5BE2D]/30 transition-all duration-500 shadow-lg">
                       <h4 className="text-2xl font-semibold mb-4 text-white">
-                        Multi-Camera Setup
+                        {t("Features.replayWall.title")}
                       </h4>
                       <p className="text-gray-300 leading-relaxed mb-6">
-                        Our advanced multi-camera system captures every angle of
-                        your game, ensuring no moment is missed. The
-                        synchronized cameras work together to provide complete
-                        coverage and cinematic perspectives.
+                        {t("Features.replayWall.description")}
                       </p>
                       <ul className="space-y-3">
+                        
                         <li className="flex items-center text-gray-300">
                           <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                          360° coverage of the court
+                          {t("Features.replayWall.list1")}
                         </li>
                         <li className="flex items-center text-gray-300">
                           <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                          4K Ultra HD resolution
+                          {t("Features.replayWall.list2")}
                         </li>
                         <li className="flex items-center text-gray-300">
                           <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                          Automatic best angle selection
+                          {t("Features.replayWall.list3")}
                         </li>
                       </ul>
                     </div>
@@ -330,25 +323,23 @@ export default function LandingPage() {
                   <div className="feature-content md:w-2/5 md:pr-16">
                     <div className="bg-black/40 backdrop-blur-md rounded-3xl p-8 border border-gray-800 transform md:translate-x-[80px] hover:border-[#F5BE2D]/30 transition-all duration-500 shadow-lg">
                       <h4 className="text-2xl font-semibold mb-4 text-white">
-                        Smart Highlight Creation
+                        {t("Features.smartHighlight.title")}
                       </h4>
                       <p className="text-gray-300 leading-relaxed mb-6">
-                        Our advanced AI automatically identifies key moments in
-                        your game and creates personalized highlight reels in
-                        real-time, ensuring you never miss your best plays.
+                        {t("Features.smartHighlight.description")}
                       </p>
                       <ul className="space-y-3">
                         <li className="flex items-center text-gray-300">
                           <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                          Automatic key moment detection
+                          {t("Features.smartHighlight.list1")}
                         </li>
                         <li className="flex items-center text-gray-300">
                           <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                          Player and ball tracking
+                          {t("Features.smartHighlight.list2")}
                         </li>
                         <li className="flex items-center text-gray-300">
                           <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                          Personalized highlight creation
+                          {t("Features.smartHighlight.list3")}
                         </li>
                       </ul>
                     </div>
@@ -367,7 +358,7 @@ export default function LandingPage() {
                           alt="Edge Processing"
                           fill
                           className="object-cover"
-                        />
+                          />
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent"></div>
                       <div className="absolute bottom-0 left-0 w-full p-6 md:p-10">
@@ -388,26 +379,23 @@ export default function LandingPage() {
                   <div className="feature-content md:w-2/5 md:pl-16">
                     <div className="bg-black/40 backdrop-blur-md rounded-3xl p-8 border border-gray-800 transform md:translate-x-[-80px] hover:border-[#F5BE2D]/30 transition-all duration-500 shadow-lg">
                       <h4 className="text-2xl font-semibold mb-4 text-white">
-                        Instant Processing
+                          {t("Features.instantProcessing.title")}
                       </h4>
                       <p className="text-gray-300 leading-relaxed mb-6">
-                        Our on-site NVIDIA Jetson Orin devices process your
-                        video locally in real-time, ensuring instant,
-                        high-quality video generation without delays or cloud
-                        dependencies.
+                        {t("Features.instantProcessing.description")}
                       </p>
                       <ul className="space-y-3">
                         <li className="flex items-center text-gray-300">
                           <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                          Real-time video processing
+                          {t("Features.instantProcessing.list1")}
                         </li>
                         <li className="flex items-center text-gray-300">
                           <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                          High-performance AI computing
+                          {t("Features.instantProcessing.list2")}
                         </li>
                         <li className="flex items-center text-gray-300">
                           <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                          No cloud upload required
+                          {t("Features.instantProcessing.list3")}
                         </li>
                       </ul>
                     </div>
@@ -447,25 +435,23 @@ export default function LandingPage() {
                   <div className="feature-content md:w-2/5 md:pr-16">
                     <div className="bg-black/40 backdrop-blur-md rounded-3xl p-8 border border-gray-800 transform md:translate-x-[80px] hover:border-[#F5BE2D]/30 transition-all duration-500 shadow-lg">
                       <h4 className="text-2xl font-semibold mb-4 text-white">
-                        Seamless Experience
+                        {t("Features.seamlessExperience.title")}
                       </h4>
                       <p className="text-gray-300 leading-relaxed mb-6">
-                        Simply scan a QR code at the court to start your
-                        recording session and receive your professional
-                        highlights instantly on your device.
+                        {t("Features.seamlessExperience.description")}
                       </p>
                       <ul className="space-y-3">
                         <li className="flex items-center text-gray-300">
                           <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                          One-scan session start
+                          {t("Features.seamlessExperience.list1")}
                         </li>
                         <li className="flex items-center text-gray-300">
                           <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                          Instant delivery to your device
+                          {t("Features.seamlessExperience.list2")}
                         </li>
                         <li className="flex items-center text-gray-300">
                           <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                          Easy sharing to social media
+                          {t("Features.seamlessExperience.list3")}
                         </li>
                       </ul>
                     </div>
@@ -483,7 +469,7 @@ export default function LandingPage() {
               >
                 <Link href={`/${locale}/demo`} className="flex items-center">
                   <span className="mr-3 text-lg font-semibold">
-                    Try Interactive Demo
+                    {t("Features.cta")}
                   </span>
                   <div className="w-10 h-10 rounded-full bg-[#F5BE2D] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                     <Play className="h-5 w-5 text-black ml-1" />
@@ -499,7 +485,7 @@ export default function LandingPage() {
       <section className="relative bg-gradient-to-b from-blue-800/30 to-black/90 py-8 sm:py-12">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-white mb-8 sm:mb-12">
-            Your Highlight Journey
+            {t("journey.title")}
           </h2>
           <div className="relative flex flex-col sm:flex-row justify-between mt-8 sm:mt-12 px-0 sm:px-4 gap-8 sm:gap-0">
             <div className="hidden sm:block absolute top-10 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400 z-0"></div>
@@ -510,11 +496,10 @@ export default function LandingPage() {
               </div>
               <div className="text-left sm:text-center">
                 <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
-                  Play Your Game
+                  {t("journey.step1.heading")}
                 </h3>
                 <p className="text-gray-300 text-xs sm:text-sm">
-                  Focus on what you do best - playing your heart out on the
-                  court.
+                  {t("journey.step1.description")}
                 </p>
               </div>
             </div>
@@ -525,10 +510,10 @@ export default function LandingPage() {
               </div>
               <div className="text-left sm:text-center">
                 <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
-                  We Capture Everything
+                  {t("journey.step2.heading")}
                 </h3>
                 <p className="text-gray-300 text-xs sm:text-sm">
-                  Our cameras and AI track all the action while you play.
+                  {t("journey.step2.description")}
                 </p>
               </div>
             </div>
@@ -539,11 +524,10 @@ export default function LandingPage() {
               </div>
               <div className="text-left sm:text-center">
                 <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
-                  Get Your Highlights
+                  {t("journey.step3.heading")}
                 </h3>
                 <p className="text-gray-300 text-xs sm:text-sm">
-                  Receive your personalized highlight reel instantly after the
-                  game.
+                  {t("journey.step3.description")}
                 </p>
               </div>
             </div>
@@ -554,10 +538,10 @@ export default function LandingPage() {
               </div>
               <div className="text-left sm:text-center">
                 <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
-                  Share & Celebrate
+                  {t("journey.step4.heading")}
                 </h3>
                 <p className="text-gray-300 text-xs sm:text-sm">
-                  Show off your skills to friends, family, coaches, and scouts.
+                  {t("journey.step4.description")}
                 </p>
               </div>
             </div>
@@ -570,12 +554,10 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className=" font-bold text-4xl text-white mb-8 relative after:content-[''] after:absolute after:bottom-[-10px] after:left-0 after:w-20 after:h-[3px] after:bg-gradient-to-r after:from-[#ffc107] after:to-[#fff7b00] after:shadow-[0_0_10px_rgba(255,193,7,0.5)]">
-                Start in Seconds
+                {t("start.title")}
               </h2>
               <p className="text-[#aaa] text-lg mb-8">
-                Getting your highlights is as easy as scanning a code. No
-                complicated setup, no waiting - just instant access to your
-                greatest moments.
+                {t("start.description")}
               </p>
               <div className="bg-[#0a1128]/70 rounded-xl p-6 shadow-[0_8px_16px_rgba(0,0,0,0.3)] flex flex-col md:flex-row items-center text-center md:text-left">
                 <Image
@@ -587,12 +569,10 @@ export default function LandingPage() {
                 />
                 <div>
                   <p className="text-white italic mb-2">
-                    "I scanned the QR code before our game, and by the time I
-                    got to the locker room, my highlights were ready to watch.
-                    My dunk looked even better than I remembered!"
+                    {t("start.testimonial.quote")}
                   </p>
                   <p className="text-[#ffc107] font-medium text-sm not-italic">
-                    - Jamal T., Forward
+                    {t("start.testimonial.author")}
                   </p>
                 </div>
               </div>
@@ -628,12 +608,11 @@ export default function LandingPage() {
           <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-[#F5BE2D]">
-                See It In Action
+                {t("action.title")}
               </span>
             </h2>
             <p className="text-xl text-gray-400 mb-16 max-w-4xl mx-auto">
-              Experience how our AI transforms raw footage into stunning
-              highlight reels
+              {t("action.description")}
             </p>
             <VideoPlayer />
 
@@ -644,7 +623,7 @@ export default function LandingPage() {
               className="bg-[#F5BE2D] hover:bg-[#F5BE2D]/90 text-black font-bold rounded-full px-16 py-6 text-lg shadow-2xl shadow-[#F5BE2D]/30 hover:shadow-[#F5BE2D]/50 transition-all duration-300 hover:scale-105"
             >
               <Link href={`/${locale}/start?court=demo123`}>
-                Start Session Now <ArrowRight className="ml-3 h-6 w-6" />
+                {t("action.cta")} <ArrowRight className="ml-3 h-6 w-6" />
               </Link>
             </Button>
           </div>
@@ -655,10 +634,10 @@ export default function LandingPage() {
       <section className="relative py-20 bg-gradient-to-b from-[#051937]/70 to-black/90">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className=" font-bold text-4xl text-center text-white mb-4 glow-yellow">
-            Community Highlights
+            {t("community.title")}
           </h2>
           <p className="text-center text-[#aaa] text-lg mb-12 max-w-2xl mx-auto">
-            Join thousands of players already creating unforgettable moments
+            {t("community.description")}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="bg-[#0a1128]/70 rounded-xl overflow-hidden shadow-[0_4px_8px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.3),0_0_20px_rgba(255,193,7,0.2)] hover:-translate-y-1 transition-all duration-300">
@@ -676,7 +655,7 @@ export default function LandingPage() {
               </div>
               <div className="p-6">
                 <p className="font-bold text-lg text-white mb-2">
-                  Championship Winning Shot
+                  {t("community.highlights.highlight1.title")}
                 </p>
                 <p className="text-[#aaa] text-sm mb-4">by Michael J.</p>
                 <div className="flex justify-between text-[#ffc107] text-sm">
@@ -700,7 +679,7 @@ export default function LandingPage() {
               </div>
               <div className="p-6">
                 <p className="font-bold text-lg text-white mb-2">
-                  Amazing Dunk Contest
+                  {t("community.highlights.highlight2.title")}
                 </p>
                 <p className="text-[#aaa] text-sm mb-4">by Eastside Ballers</p>
                 <div className="flex justify-between text-[#ffc107] text-sm">
@@ -724,7 +703,7 @@ export default function LandingPage() {
               </div>
               <div className="p-6">
                 <p className="font-bold text-lg text-white mb-2">
-                  Defensive Play of the Year
+                  {t("community.highlights.highlight3.title")}
                 </p>
                 <p className="text-[#aaa] text-sm mb-4">by Sarah K.</p>
                 <div className="flex justify-between text-[#ffc107] text-sm">
@@ -745,12 +724,11 @@ export default function LandingPage() {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-6xl font-bold text-center mb-6">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-[#F5BE2D]">
-              For Court Operators & Partners
+              {t("partners.title")}
             </span>
           </h2>
           <p className="text-xl text-center text-gray-400 max-w-4xl mx-auto mb-20">
-            Transform your facility into a premium destination with ÉliteReplay
-            technology
+            {t("partners.description")}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
@@ -761,11 +739,10 @@ export default function LandingPage() {
               </div>
               <h3 className="text-2xl font-semibold mb-6 group-hover:text-[#F5BE2D] transition-colors">
                 Monetization
+                {t("partners.monetization.title")}
               </h3>
               <p className="text-gray-400 mb-6 leading-relaxed">
-                Create new revenue streams by offering premium highlight
-                packages to players and teams. Increase court bookings with
-                unique value propositions.
+                {t("partners.monetization.description")}
               </p>
               <div className="h-1 w-24 bg-[#F5BE2D] rounded-full group-hover:w-40 transition-all duration-500"></div>
             </div>
@@ -776,12 +753,10 @@ export default function LandingPage() {
                 <Award className="h-8 w-8 text-[#F5BE2D]" />
               </div>
               <h3 className="text-2xl font-semibold mb-6 group-hover:text-[#F5BE2D] transition-colors">
-                Club Branding
+                {t("partners.clubBranding.title")}
               </h3>
               <p className="text-gray-400 mb-6 leading-relaxed">
-                Customize videos with your club's branding, logos, and colors
-                for a professional look. Enhance your facility's reputation and
-                marketing reach.
+                {t("partners.clubBranding.description")}
               </p>
               <div className="h-1 w-24 bg-[#F5BE2D] rounded-full group-hover:w-40 transition-all duration-500"></div>
             </div>
@@ -792,12 +767,10 @@ export default function LandingPage() {
                 <Users className="h-8 w-8 text-[#F5BE2D]" />
               </div>
               <h3 className="text-2xl font-semibold mb-6 group-hover:text-[#F5BE2D] transition-colors">
-                Community Features
+                {t("partners.communityFeatures.title")}
               </h3>
               <p className="text-gray-400 mb-6 leading-relaxed">
-                Build a stronger community by enabling players to share their
-                highlights on social media. Foster engagement and attract new
-                members.
+                {t("partners.communityFeatures.description")}
               </p>
               <div className="h-1 w-24 bg-[#F5BE2D] rounded-full group-hover:w-40 transition-all duration-500"></div>
             </div>
@@ -809,9 +782,9 @@ export default function LandingPage() {
               asChild
               size="lg"
               className="bg-[#F5BE2D] hover:bg-[#F5BE2D]/90 text-black font-bold rounded-full px-12 py-6 text-lg shadow-2xl shadow-[#F5BE2D]/30 hover:shadow-[#F5BE2D]/50 transition-all duration-300 hover:scale-105"
-            >
+              >
               <Link href={`/${locale}/contact`}>
-                Apply as Pilot Court <ArrowRight className="ml-3 h-6 w-6" />
+              {t("partners.applyButton")} <ArrowRight className="ml-3 h-6 w-6" />
               </Link>
             </Button>
           </div>

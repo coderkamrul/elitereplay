@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useEffect, useRef } from "react"
@@ -8,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
 import { useToast } from "@/components/ui/use-toast"
+import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 
 export default function DemoPage() {
@@ -20,7 +22,9 @@ export default function DemoPage() {
   const [qrScanned, setQrScanned] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-const locale = useLocale();
+  const locale = useLocale();
+  const t = useTranslations('demo');
+
   // Simulate AI Detection
   const simulateAIDetection = () => {
     setIsProcessing(true)
@@ -256,11 +260,11 @@ const locale = useLocale();
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-[#F5BE2D]">
-                Interactive Demo
+                {t('title')}
               </span>
             </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Experience how ÉliteReplay's technology works with these interactive demonstrations
+              {t('description')}
             </p>
           </div>
 
@@ -300,10 +304,9 @@ const locale = useLocale();
             {/* Replay Wall Demo */}
             <TabsContent value="replay-wall" className="space-y-6">
               <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-gray-800">
-                <h2 className="text-2xl font-bold mb-6">Multi-Camera Setup Visualization</h2>
+                <h2 className="text-2xl font-bold mb-6">{t('tabs.replayWall.title')}</h2>
                 <p className="text-gray-400 mb-8">
-                  Our Replay Wall uses multiple synchronized cameras to capture every angle of the game. The cameras
-                  work together to ensure no moment is missed.
+                  {t('tabs.replayWall.description')}
                 </p>
 
                 {/* Enhanced Court Visualization with Background Image */}
@@ -325,52 +328,52 @@ const locale = useLocale();
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="bg-black/50 p-6 rounded-xl border border-gray-800">
-                    <h3 className="font-semibold mb-3 text-[#F5BE2D]">Camera Specifications</h3>
+                    <h3 className="font-semibold mb-3 text-[#F5BE2D]">{t('tabs.replayWall.cameraSpecs.title')}</h3>
                     <ul className="space-y-2 text-gray-400">
                       <li className="flex items-center">
                         <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                        4K Ultra HD Resolution
+                        {t('tabs.replayWall.cameraSpecs.items.resolution')}
                       </li>
                       <li className="flex items-center">
                         <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                        120 FPS for slow-motion capture
+                        {t('tabs.replayWall.cameraSpecs.items.fps')}
                       </li>
                       <li className="flex items-center">
                         <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                        Wide-angle lenses for full court coverage
+                        {t('tabs.replayWall.cameraSpecs.items.lenses')}
                       </li>
                       <li className="flex items-center">
                         <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                        Synchronized recording across all cameras
+                        {t('tabs.replayWall.cameraSpecs.items.sync')}
                       </li>
                       <li className="flex items-center">
                         <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                        Night vision & low-light optimization
+                        {t('tabs.replayWall.cameraSpecs.items.nightVision')}
                       </li>
                     </ul>
                   </div>
                   <div className="bg-black/50 p-6 rounded-xl border border-gray-800">
-                    <h3 className="font-semibold mb-3 text-[#F5BE2D]">Coverage Benefits</h3>
+                    <h3 className="font-semibold mb-3 text-[#F5BE2D]">{t('tabs.replayWall.coverageBenefits.title')}</h3>
                     <ul className="space-y-2 text-gray-400">
                       <li className="flex items-center">
                         <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                        360° view of all player actions
+                        {t('tabs.replayWall.coverageBenefits.items.view')}
                       </li>
                       <li className="flex items-center">
                         <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                        Multiple angles for each play
+                        {t('tabs.replayWall.coverageBenefits.items.angles')}
                       </li>
                       <li className="flex items-center">
                         <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                        Automatic best angle selection
+                        {t('tabs.replayWall.coverageBenefits.items.selection')}
                       </li>
                       <li className="flex items-center">
                         <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                        No blind spots on the court
+                        {t('tabs.replayWall.coverageBenefits.items.blindSpots')}
                       </li>
                       <li className="flex items-center">
                         <div className="w-2 h-2 bg-[#F5BE2D] rounded-full mr-3"></div>
-                        Premium cinematic quality
+                        {t('tabs.replayWall.coverageBenefits.items.quality')}
                       </li>
                     </ul>
                   </div>
@@ -380,13 +383,10 @@ const locale = useLocale();
                 <div className="mt-6 bg-gradient-to-r from-[#F5BE2D]/10 to-transparent p-6 rounded-xl border border-[#F5BE2D]/20">
                   <h3 className="font-semibold mb-3 text-[#F5BE2D] flex items-center">
                     <Camera className="h-5 w-5 mr-2" />
-                    Premium Court Environment
+                    {t('tabs.replayWall.courtEnv.title')}
                   </h3>
                   <p className="text-gray-300 leading-relaxed">
-                    Our system is designed to work in all lighting conditions, from bright daylight to atmospheric night
-                    games. The cameras automatically adjust for optimal capture quality, ensuring your highlights look
-                    professional regardless of the time of day or court lighting setup. This visualization showcases a
-                    moody, spotlit night court.
+                    {t('tabs.replayWall.courtEnv.description')}
                   </p>
                 </div>
               </div>
@@ -395,9 +395,9 @@ const locale = useLocale();
             {/* AI Detection Demo */}
             <TabsContent value="ai-detection" className="space-y-6">
               <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-gray-800">
-                <h2 className="text-2xl font-bold mb-6">Real-Time AI Object Detection</h2>
+                <h2 className="text-2xl font-bold mb-6">{t('tabs.aiDetection.title')}</h2>
                 <p className="text-gray-400 mb-8">
-                  Watch our AI identify players, track the ball, and detect key moments in real-time.
+                  {t('tabs.aiDetection.description')}
                 </p>
 
                 <div className="bg-black rounded-xl p-4 mb-6 relative">
@@ -430,7 +430,7 @@ const locale = useLocale();
 
                 {detectedObjects.length > 0 && (
                   <div className="bg-black/50 p-6 rounded-xl mb-6">
-                    <h3 className="font-semibold mb-4 text-[#F5BE2D]">Detected Objects</h3>
+                    <h3 className="font-semibold mb-4 text-[#F5BE2D]">{t('tabs.aiDetection.detectedObjects')}</h3>
                     <div className="space-y-3">
                       {detectedObjects.map((obj, index) => (
                         <div key={index} className="flex items-center justify-between p-3 bg-black/40 rounded-lg">
@@ -470,9 +470,9 @@ const locale = useLocale();
             {/* Edge Processing Demo */}
             <TabsContent value="edge-processing" className="space-y-6">
               <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-gray-800">
-                <h2 className="text-2xl font-bold mb-6">Edge Computing Simulation</h2>
+                <h2 className="text-2xl font-bold mb-6">{t('tabs.edgeProcessing.title')}</h2>
                 <p className="text-gray-400 mb-8">
-                  See how our NVIDIA Jetson Orin devices process video locally for instant results.
+                  {t('tabs.edgeProcessing.description')}
                 </p>
 
                 <div className="bg-black rounded-xl p-8 mb-6">
@@ -593,9 +593,9 @@ const locale = useLocale();
             {/* QR Access Demo */}
             <TabsContent value="qr-access" className="space-y-6">
               <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-gray-800">
-                <h2 className="text-2xl font-bold mb-6">QR Code Access Simulation</h2>
+                <h2 className="text-2xl font-bold mb-6">{t('tabs.qrAccess.title')}</h2>
                 <p className="text-gray-400 mb-8">
-                  Experience how easy it is to start a recording session with our QR code system.
+                  {t('tabs.qrAccess.description')}
                 </p>
 
                 <div className="max-w-md mx-auto">
@@ -606,17 +606,17 @@ const locale = useLocale();
                           <QrCode className="h-32 w-32 text-black" />
                         </div>
                         <p className="text-gray-400 mb-4">
-                          Scan this QR code at the court to start your recording session
+                          {t('tabs.qrAccess.scanMessage')}
                         </p>
                       </>
                     ) : (
                       <>
                         <CheckCircle className="h-32 w-32 text-[#F5BE2D] mx-auto mb-6" />
                         <h3 className="text-2xl font-semibold mb-4">QR Code Scanned!</h3>
-                        <p className="text-gray-400 mb-4">Redirecting to session start page...</p>
+                        <p className="text-gray-400 mb-4">{t('tabs.qrAccess.scannedMessage')}</p>
                         <div className="bg-gray-900 rounded-lg p-4">
-                          <p className="text-sm text-gray-400">Court ID: ABC123</p>
-                          <p className="text-sm text-gray-400">Location: Downtown Basketball Court</p>
+                          <p className="text-sm text-gray-400">{t('tabs.qrAccess.courtInfo.courtId')}</p>
+                          <p className="text-sm text-gray-400">{t('tabs.qrAccess.courtInfo.location')}</p>
                         </div>
                       </>
                     )}
@@ -644,23 +644,23 @@ const locale = useLocale();
                   </div>
 
                   <div className="mt-8 bg-black/50 p-6 rounded-xl">
-                    <h3 className="font-semibold mb-3 text-[#F5BE2D]">How It Works</h3>
+                    <h3 className="font-semibold mb-3 text-[#F5BE2D]">{t('tabs.qrAccess.howItWorks.title')}</h3>
                     <ol className="space-y-3 text-gray-400">
                       <li className="flex">
                         <span className="text-[#F5BE2D] font-bold mr-3">1.</span>
-                        Find the QR code displayed at the court entrance
+                        {t('tabs.qrAccess.howItWorks.steps.find')}
                       </li>
                       <li className="flex">
                         <span className="text-[#F5BE2D] font-bold mr-3">2.</span>
-                        Scan with your phone's camera
+                        {t('tabs.qrAccess.howItWorks.steps.scan')}
                       </li>
                       <li className="flex">
                         <span className="text-[#F5BE2D] font-bold mr-3">3.</span>
-                        Enter your email on the session page
+                        {t('tabs.qrAccess.howItWorks.steps.email')}
                       </li>
                       <li className="flex">
                         <span className="text-[#F5BE2D] font-bold mr-3">4.</span>
-                        Play your game - we handle the rest!
+                        {t('tabs.qrAccess.howItWorks.steps.play')}
                       </li>
                     </ol>
                   </div>
@@ -670,8 +670,6 @@ const locale = useLocale();
           </Tabs>
         </div>
       </div>
-
-      
     </div>
   )
 }

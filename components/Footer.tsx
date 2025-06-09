@@ -1,9 +1,11 @@
+'use client';
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 const Footer = () => {
       const locale = useLocale();
+      const t = useTranslations("Footer");
   return (
       <footer className="py-16 bg-black border-t border-gray-800">
         <div className="container mx-auto px-4">
@@ -18,7 +20,7 @@ const Footer = () => {
                 className="mx-auto md:mx-0 mb-4"
               />
               <p className="text-gray-400 text-lg">
-                AI-powered sports highlights
+                {t('text')}
               </p>
             </div>
             {/* Contact, Imprint, Privacy links */}
@@ -27,7 +29,7 @@ const Footer = () => {
                 href={`/${locale}/contact`}
                 className="text-gray-400 hover:text-[#F5BE2D] transition-colors text-lg font-medium"
               >
-                Contact
+                {t('contact')}
               </Link>
               <Link
                 href={`/${locale}/imprint`}
@@ -44,7 +46,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500">
-            © {new Date().getFullYear()} ÉliteReplay. All rights reserved.
+            © {new Date().getFullYear()} {t('copyright')}
           </div>
         </div>
       </footer>

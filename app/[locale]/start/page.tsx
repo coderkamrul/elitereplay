@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 export default function StartSessionPage() {
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -24,6 +24,7 @@ export default function StartSessionPage() {
   const [error, setError] = useState("")
   const [sessionCode, setSessionCode] = useState("")
   const locale = useLocale();
+  const t = useTranslations("recording");
   useEffect(() => {
     // Try to get email from localStorage
     const savedEmail = localStorage.getItem("eliteReplayEmail")
@@ -123,22 +124,22 @@ export default function StartSessionPage() {
                 <div className="bg-[#F5BE2D]/20 p-4 rounded-full w-fit mx-auto mb-6">
                   <Zap className="h-12 w-12 text-[#F5BE2D]" />
                 </div>
-                <h2 className="text-4xl font-bold mb-4">Start Recording</h2>
+                <h2 className="text-4xl font-bold mb-4">{t("title")}</h2>
                 <p className="text-gray-400 text-lg">
-                  Ready to capture your game at court: <span className="text-[#F5BE2D] font-semibold">{courtId}</span>
+                  {t("description")} <span className="text-[#F5BE2D] font-semibold">{courtId}</span>
                 </p>
               </>
             ) : (
               <>
-                <h2 className="text-4xl font-bold mb-4">Court Not Found</h2>
-                <p className="text-gray-400 text-lg">Court ID not found. Please scan the QR code again.</p>
+                <h2 className="text-4xl font-bold mb-4">{t("courtNotFound.title")}</h2>
+                <p className="text-gray-400 text-lg">{t("courtNotFound.message")}</p>
               </>
             )}
           </div>
 
           {!isSuccess ? (
             <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-10 border border-gray-800 shadow-2xl">
-              <h3 className="text-2xl font-semibold mb-8 text-center">Start Your Session</h3>
+              <h3 className="text-2xl font-semibold mb-8 text-center">{t("session.title")}</h3>
 
               {error && (
                 <div className="mb-6 p-4 bg-red-900/30 border border-red-800 rounded-xl text-red-200 text-center">
@@ -149,7 +150,7 @@ export default function StartSessionPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <Label htmlFor="email" className="block mb-3 text-lg font-medium">
-                    Email Address
+                    {t("session.emailLabel")}
                   </Label>
                   <Input
                     id="email"
@@ -161,7 +162,7 @@ export default function StartSessionPage() {
                     className="bg-gray-800 border-gray-700 text-white h-14 text-lg rounded-xl focus:border-[#F5BE2D] focus:ring-[#F5BE2D]"
                     disabled={isSubmitting || !courtId}
                   />
-                  <p className="mt-3 text-sm text-gray-400">We'll send your highlight video to this email</p>
+                  <p className="mt-3 text-sm text-gray-400">{t("session.emailDescription")}</p>
                 </div>
 
                 <Button
@@ -176,7 +177,7 @@ export default function StartSessionPage() {
                     </>
                   ) : (
                     <>
-                      Start Session <ArrowRight className="ml-3 h-5 w-5" />
+                      {t("session.button")} <ArrowRight className="ml-3 h-5 w-5" />
                     </>
                   )}
                 </Button>
@@ -187,14 +188,14 @@ export default function StartSessionPage() {
               <div className="flex justify-center mb-8">
                 <CheckCircle className="h-20 w-20 text-[#F5BE2D]" />
               </div>
-              <h3 className="text-3xl font-semibold mb-6">Session Started!</h3>
+              <h3 className="text-3xl font-semibold mb-6">{t("success.title")}</h3>
               <p className="text-gray-300 mb-8 text-lg leading-relaxed">
-                Your recording session is now running. You'll receive your highlight video shortly at{" "}
+                {t("success.description")}{" "}
                 <span className="text-white font-semibold">{email}</span>.
               </p>
               <div className="p-6 bg-black/50 rounded-xl border border-gray-700 mb-8">
                 <p className="text-gray-400">
-                  Play your best game! Our AI is watching and will capture all your highlight moments.
+                  {t("success.encouragement")}
                 </p>
               </div>
               <div className="flex flex-col gap-4">
@@ -202,14 +203,14 @@ export default function StartSessionPage() {
                   onClick={() => router.push(`/${locale}/session/${sessionCode}`)}
                   className="bg-[#F5BE2D] hover:bg-[#F5BE2D]/90 text-black font-bold h-14 text-lg rounded-xl shadow-lg shadow-[#F5BE2D]/20 hover:shadow-[#F5BE2D]/40 transition-all duration-300"
                 >
-                  View Your Session <ArrowRight className="ml-3 h-5 w-5" />
+                  {t("success.viewButton")} <ArrowRight className="ml-3 h-5 w-5" />
                 </Button>
                 <Button
                   onClick={() => window.close()}
                   variant="outline"
                   className="border-gray-700 bg-transparent hover:text-white text-white hover:bg-white/10 h-14 text-lg rounded-xl"
                 >
-                  Close This Window
+                  {t("success.closeButton")}
                 </Button>
               </div>
             </div>

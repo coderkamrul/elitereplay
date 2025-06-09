@@ -25,7 +25,7 @@ import { useToast } from "@/components/ui/use-toast"
 import { useMobile } from "@/hooks/use-mobile"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 // Mock data for video sessions
 const videoSessions = {
   demo123: {
@@ -98,6 +98,7 @@ export default function SessionPage() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const locale = useLocale();
   const sessionCode = params.code as string
+  const t = useTranslations('sessionDemo');
 
   const [isLoading, setIsLoading] = useState(true)
   const [session, setSession] = useState<any>(null)
@@ -256,8 +257,8 @@ export default function SessionPage() {
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="h-16 w-16 animate-spin mx-auto mb-6 text-[#F5BE2D]" />
-          <h2 className="text-2xl font-semibold mb-2">Loading your highlights...</h2>
-          <p className="text-gray-400">This may take a few moments</p>
+          <h2 className="text-2xl font-semibold mb-2">{t('loading.title')}</h2>
+          <p className="text-gray-400">{t('loading.subtitle')}</p>
         </div>
       </div>
     )
@@ -268,15 +269,13 @@ export default function SessionPage() {
       <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
         <div className="text-center max-w-md">
           <AlertCircle className="h-16 w-16 mx-auto mb-6 text-[#F5BE2D]" />
-          <h2 className="text-3xl font-semibold mb-4">Video Not Found</h2>
-          <p className="text-gray-400 mb-8 text-lg">
-            The highlight video you're looking for isn't available yet or may have been removed.
-          </p>
+          <h2 className="text-3xl font-semibold mb-4">{t('notFound.title')}</h2>
+          <p className="text-gray-400 mb-8 text-lg">{t('notFound.message')}</p>
           <Button
             onClick={() => router.push("/")}
             className="bg-[#F5BE2D] hover:bg-[#F5BE2D]/90 text-black font-bold rounded-xl px-8 py-3"
           >
-            Return to Home
+            {t('notFound.return')}
           </Button>
         </div>
       </div>
@@ -308,15 +307,15 @@ export default function SessionPage() {
             <h1 className="text-3xl md:text-4xl font-bold mb-4">{session.title}</h1>
             <div className="flex flex-wrap items-center text-gray-400 gap-6">
               <span className="flex items-center">
-                <span className="font-medium">Date:</span>
+                <span className="font-medium">{t('titleInfo.date')}</span>
                 <span className="ml-2">{session.date}</span>
               </span>
               <span className="flex items-center">
-                <span className="font-medium">Duration:</span>
+                <span className="font-medium">{t('titleInfo.duration')}</span>
                 <span className="ml-2">{session.duration}</span>
               </span>
               <span className="flex items-center">
-                <span className="font-medium">Court:</span>
+                <span className="font-medium">{t('titleInfo.court')}</span>
                 <span className="ml-2">{session.court}</span>
               </span>
             </div>
@@ -401,11 +400,11 @@ export default function SessionPage() {
               {isDownloading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Downloading...
+                  {t('buttons.downloading')}
                 </>
               ) : (
                 <>
-                  <Download className="mr-2 h-4 w-4" /> Download Video
+                  <Download className="mr-2 h-4 w-4" /> {t('buttons.download')}
                 </>
               )}
             </Button>
@@ -418,12 +417,12 @@ export default function SessionPage() {
               {isCopied ? (
                 <>
                   <Copy className="mr-2 h-4 w-4" />
-                  Link Copied!
+                  {t('buttons.copied')}
                 </>
               ) : (
                 <>
                   <Share2 className="mr-2 h-4 w-4" />
-                  Share
+                  {t('buttons.share')}
                 </>
               )}
             </Button>
@@ -443,7 +442,7 @@ export default function SessionPage() {
 
             <Button variant="ghost" className="text-white hover:text-white hover:bg-white/10 rounded-lg px-6 py-3">
               <MessageSquare className="mr-2 h-4 w-4" />
-              {session.comments}
+              {session.comments} {t('buttons.comment')}
             </Button>
           </div>
 
@@ -451,19 +450,19 @@ export default function SessionPage() {
           <Tabs defaultValue="highlights" className="mb-12">
             <TabsList className="bg-gray-900 border border-gray-800 rounded-xl">
               <TabsTrigger value="highlights" className="rounded-lg">
-                Highlights
+                {t('tabs.highlights')}
               </TabsTrigger>
               <TabsTrigger value="ai-analysis" className="rounded-lg">
-                AI Analysis
+                {t('tabs.aiAnalysis')}
               </TabsTrigger>
               <TabsTrigger value="details" className="rounded-lg">
-                Details
+                {t('tabs.details')}
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="highlights" className="mt-6">
               <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-gray-800">
-                <h3 className="text-2xl font-semibold mb-6">Key Moments</h3>
+                <h3 className="text-2xl font-semibold mb-6">{t('highlights.title')}</h3>
                 <div className="space-y-4">
                   {session.aiAnalysis.detectedMoments.map((moment: any, index: number) => (
                     <div
@@ -496,14 +495,14 @@ export default function SessionPage() {
                     <Brain className="h-8 w-8 text-[#F5BE2D]" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-semibold">AI Analysis Report</h3>
-                    <p className="text-gray-400 text-lg">Powered by ÉliteReplay's computer vision technology</p>
+                    <h3 className="text-2xl font-semibold">{t('aiAnalysis.title')}</h3>
+                    <p className="text-gray-400 text-lg">{t('aiAnalysis.subtitle')}</p>
                   </div>
                 </div>
 
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="player-stats">
-                    <AccordionTrigger className="text-xl font-medium">Player Statistics</AccordionTrigger>
+                    <AccordionTrigger className="text-xl font-medium">{t('aiAnalysis.playerStats')}</AccordionTrigger>
                     <AccordionContent>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
                         {Object.entries(session.aiAnalysis.playerStats).map(([key, value]: [string, any]) => (
@@ -519,20 +518,16 @@ export default function SessionPage() {
                   </AccordionItem>
 
                   <AccordionItem value="detection-details">
-                    <AccordionTrigger className="text-xl font-medium">Detection Details</AccordionTrigger>
+                    <AccordionTrigger className="text-xl font-medium">{t('aiAnalysis.detectionDetails')}</AccordionTrigger>
                     <AccordionContent>
                       <div className="space-y-6 mt-4">
                         <div className="bg-black/40 p-6 rounded-xl">
-                          <h4 className="font-semibold mb-3 text-lg">How Our AI Works</h4>
-                          <p className="text-gray-400 leading-relaxed">
-                            Our computer vision models analyze every frame of your game to identify players, track
-                            movements, and detect key moments. The system uses a combination of object detection, action
-                            recognition, and excitement scoring algorithms to create your personalized highlights.
-                          </p>
+                          <h4 className="font-semibold mb-3 text-lg">{t('aiAnalysis.howItWorks.title')}</h4>
+                          <p className="text-gray-400 leading-relaxed">{t('aiAnalysis.howItWorks.text')}</p>
                         </div>
 
                         <div className="bg-black/40 p-6 rounded-xl">
-                          <h4 className="font-semibold mb-4 text-lg">Detection Confidence</h4>
+                          <h4 className="font-semibold mb-4 text-lg">{t('aiAnalysis.detectionConfidence')}</h4>
                           <div className="space-y-4">
                             {session.aiAnalysis.detectedMoments.map((moment: any, index: number) => (
                               <div key={index} className="flex items-center justify-between">
@@ -577,21 +572,32 @@ export default function SessionPage() {
 
             <TabsContent value="details" className="mt-6">
               <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-gray-800">
-                <h3 className="text-2xl font-semibold mb-6">Session Details</h3>
+                <h3 className="text-2xl font-semibold mb-6">{t('details.title')}</h3>
                 <div className="space-y-6">
-                  {[
-                    { label: "Date", value: session.date },
-                    { label: "Duration", value: session.duration },
-                    { label: "Court", value: session.court },
-                    { label: "Player", value: session.player },
-                    { label: "Session ID", value: sessionCode },
-                    { label: "Quality", value: "4K Ultra HD" },
-                  ].map((item, index) => (
-                    <div key={index} className="flex border-b border-gray-800 pb-4">
-                      <div className="w-40 font-medium text-gray-400 text-lg">{item.label}</div>
-                      <div className="text-lg font-medium">{item.value}</div>
-                    </div>
-                  ))}
+                  <div className="flex border-b border-gray-800 pb-4">
+                    <div className="w-40 font-medium text-gray-400 text-lg">{t('details.fields.date')}</div>
+                    <div className="text-lg font-medium">{session.date}</div>
+                  </div>
+                  <div className="flex border-b border-gray-800 pb-4">
+                    <div className="w-40 font-medium text-gray-400 text-lg">{t('details.fields.duration')}</div>
+                    <div className="text-lg font-medium">{session.duration}</div>
+                  </div>
+                  <div className="flex border-b border-gray-800 pb-4">
+                    <div className="w-40 font-medium text-gray-400 text-lg">{t('details.fields.court')}</div>
+                    <div className="text-lg font-medium">{session.court}</div>
+                  </div>
+                  <div className="flex border-b border-gray-800 pb-4">
+                    <div className="w-40 font-medium text-gray-400 text-lg">{t('details.fields.player')}</div>
+                    <div className="text-lg font-medium">{session.player}</div>
+                  </div>
+                  <div className="flex border-b border-gray-800 pb-4">
+                    <div className="w-40 font-medium text-gray-400 text-lg">{t('details.fields.sessionId')}</div>
+                    <div className="text-lg font-medium">{sessionCode}</div>
+                  </div>
+                  <div className="flex border-b border-gray-800 pb-4">
+                    <div className="w-40 font-medium text-gray-400 text-lg">{t('details.fields.quality')}</div>
+                    <div className="text-lg font-medium">4K Ultra HD</div>
+                  </div>
                 </div>
               </div>
             </TabsContent>
@@ -599,14 +605,14 @@ export default function SessionPage() {
 
           {/* Player Info */}
           <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-gray-800 mb-8">
-            <h3 className="text-2xl font-semibold mb-6">Player Information</h3>
+            <h3 className="text-2xl font-semibold mb-6">{t('playerInfo.title')}</h3>
             <div className="flex items-center">
               <div className="w-16 h-16 rounded-full bg-[#F5BE2D]/20 flex items-center justify-center mr-6">
                 <span className="text-[#F5BE2D] font-bold text-xl">{session.player.charAt(0)}</span>
               </div>
               <div>
                 <p className="font-bold text-xl">{session.player}</p>
-                <p className="text-gray-400 text-lg">Recorded at {session.court}</p>
+                <p className="text-gray-400 text-lg">{t('playerInfo.recordedAt')} {session.court}</p>
               </div>
             </div>
           </div>
@@ -615,20 +621,16 @@ export default function SessionPage() {
           <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-gray-800 mb-8">
             <div className="flex items-center mb-6">
               <Info className="h-6 w-6 text-[#F5BE2D] mr-3" />
-              <h3 className="text-2xl font-semibold">About ÉliteReplay AI</h3>
+              <h3 className="text-2xl font-semibold">{t('aiTechInfo.title')}</h3>
             </div>
-            <p className="text-gray-300 mb-6 text-lg leading-relaxed">
-              This highlight video was automatically generated by our AI-powered system using edge computing technology.
-              The NVIDIA Jetson Orin device at {session.court} processed the raw footage in real-time, identifying key
-              moments and creating this personalized highlight reel just for you.
-            </p>
+            <p className="text-gray-300 mb-6 text-lg leading-relaxed">{t('aiTechInfo.description')}</p>
             <div className="flex justify-between items-center flex-wrap gap-6">
               <div className="flex items-center">
                 <div className="bg-[#F5BE2D]/20 p-3 rounded-full mr-4">
                   <Zap className="h-5 w-5 text-[#F5BE2D]" />
                 </div>
                 <div>
-                  <div className="font-semibold text-lg">Processing Time</div>
+                  <div className="font-semibold text-lg">{t('aiTechInfo.processingTime')}</div>
                   <div className="text-gray-400">{session.aiAnalysis.processingDetails.processingTime}</div>
                 </div>
               </div>
@@ -637,7 +639,7 @@ export default function SessionPage() {
                   variant="outline"
                   className="border-[#F5BE2D] text-[#F5BE2D] bg-transparent hover:text-white hover:bg-[#F5BE2D]/10 rounded-xl px-6 py-3"
                 >
-                  Learn More About Our Technology <ExternalLink className="ml-2 h-4 w-4" />
+                  {t('aiTechInfo.learnMore')} <ExternalLink className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
             </div>
@@ -645,17 +647,15 @@ export default function SessionPage() {
 
           {/* Email Subscription */}
           <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-gray-800">
-            <h3 className="text-2xl font-semibold mb-4">Stay Updated</h3>
-            <p className="text-gray-400 mb-6 text-lg">
-              Want to receive notifications about future games and highlights?
-            </p>
+            <h3 className="text-2xl font-semibold mb-4">{t('subscription.title')}</h3>
+            <p className="text-gray-400 mb-6 text-lg">{t('subscription.message')}</p>
 
             <form onSubmit={handleSubmitEmail} className="flex flex-col sm:flex-row gap-4">
               <Input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+                placeholder={t('subscription.placeholder')}
                 required
                 className="bg-gray-800 border-gray-700 text-white flex-1 h-12 rounded-xl focus:border-[#F5BE2D] focus:ring-[#F5BE2D]"
               />
@@ -663,14 +663,12 @@ export default function SessionPage() {
                 type="submit"
                 className="bg-[#F5BE2D] hover:bg-[#F5BE2D]/90 text-black font-bold whitespace-nowrap h-12 px-8 rounded-xl"
               >
-                Subscribe
+                {t('subscription.button')}
               </Button>
             </form>
           </div>
         </div>
       </div>
-
-      
     </div>
   )
 }

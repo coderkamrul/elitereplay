@@ -1,10 +1,14 @@
+'use client'
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft } from "lucide-react"
+import {  useTranslations } from "next-intl"
 
 export default function ImprintPage() {
+  const t = useTranslations("imprint")
+   const currentYear = new Date().getFullYear()
   return (
-    <div className="min-h-screen bg-black text-white">
+     <div className="min-h-screen bg-black text-white">
       {/* Header */}
       <header className="py-6 border-b border-gray-800">
         <div className="container mx-auto px-4">
@@ -12,7 +16,7 @@ export default function ImprintPage() {
             <ArrowLeft className="h-5 w-5 mr-3 group-hover:text-[#F5BE2D] transition-colors" />
             <Image
               src="/images/elitereplay-logo.png"
-              alt="ÉliteReplay Logo"
+              alt={t('company.name')}
               width={150}
               height={75}
               className="group-hover:opacity-80 transition-opacity"
@@ -26,110 +30,90 @@ export default function ImprintPage() {
           {/* Hero Section */}
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-[#F5BE2D]">Imprint</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-[#F5BE2D]">{t('title')}</span>
             </h1>
-            <p className="text-xl text-gray-400">Legal information and company details</p>
+            <p className="text-xl text-gray-400">{t('subtitle')}</p>
           </div>
 
           {/* Content */}
           <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 md:p-12 border border-gray-800">
             <div className="prose prose-invert max-w-none">
-              <h2 className="text-2xl font-bold text-[#F5BE2D] mb-6">Company Information</h2>
+              <h2 className="text-2xl font-bold text-[#F5BE2D] mb-6">{t('company.title')}</h2>
 
               <div className="space-y-6 text-gray-300 leading-relaxed">
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">ÉliteReplay Inc.</h3>
+                  <h3 className="text-xl font-semibold text-white mb-2">{t('company.name')}</h3>
                   <p>
-                    123 Innovation Drive
-                    <br />
-                    San Francisco, CA 94105
-                    <br />
-                    United States
+                    {t('company.address')}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Contact Information</h3>
+                  <h3 className="text-xl font-semibold text-white mb-2">{t('contact.title')}</h3>
                   <p>
-                    <strong>Email:</strong> contact@elitereplay.com
+                    <strong>Email:</strong> {t('contact.email')}
                     <br />
-                    <strong>Phone:</strong> +1 (555) 123-4567
+                    <strong>Phone:</strong> {t('contact.phone')}
                     <br />
-                    <strong>Website:</strong> www.elitereplay.com
+                    <strong>Website:</strong> {t('contact.website')}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Legal Representatives</h3>
+                  <h3 className="text-xl font-semibold text-white mb-2">{t('legal.title')}</h3>
                   <p>
-                    <strong>CEO:</strong> Oliver Schmidt
+                    <strong>{t('legal.ceo')}</strong>
                     <br />
-                    <strong>CTO:</strong> Dr. Sarah Johnson
+                    <strong>{t('legal.cto')}</strong>
                     <br />
-                    <strong>Legal Counsel:</strong> Martinez & Associates LLP
+                    <strong>{t('legal.legalCounsel')}</strong>
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Registration Details</h3>
+                  <h3 className="text-xl font-semibold text-white mb-2">{t('registration.title')}</h3>
                   <p>
-                    <strong>Company Registration:</strong> Delaware Corporation
+                    <strong>Company Registration:</strong> {t('registration.companyType')}
                     <br />
-                    <strong>Registration Number:</strong> 7891234
+                    <strong>Registration Number:</strong> {t('registration.registrationNumber')}
                     <br />
-                    <strong>Tax ID:</strong> 12-3456789
+                    <strong>Tax ID:</strong> {t('registration.taxId')}
                     <br />
-                    <strong>Founded:</strong> 2024
+                    <strong>Founded:</strong> {t('registration.founded')}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Responsible for Content</h3>
+                  <h3 className="text-xl font-semibold text-white mb-2">{t('responsible.title')}</h3>
                   <p>
-                    Oliver Schmidt
+                    {t('responsible.name')}
                     <br />
-                    CEO, ÉliteReplay Inc.
+                    {t('responsible.position')}
                     <br />
-                    123 Innovation Drive
+                    {t('responsible.address')}
                     <br />
-                    San Francisco, CA 94105
-                    <br />
-                    Email: oliver@elitereplay.com
+                    Email: {t('responsible.email')}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Disclaimer</h3>
-                  <p>
-                    The information on this website is provided in good faith and for general information purposes only.
-                    We do not make any warranties about the completeness, reliability, and accuracy of this information.
-                    Any action you take upon the information on this website is strictly at your own risk, and we will
-                    not be liable for any losses and damages in connection with the use of our website.
-                  </p>
+                  <h3 className="text-xl font-semibold text-white mb-2">{t('disclaimer.title')}</h3>
+                  <p>{t('disclaimer.text')}</p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Copyright Notice</h3>
-                  <p>
-                    © {new Date().getFullYear()} ÉliteReplay Inc. All rights reserved. The content, design, graphics,
-                    and other materials on this website are protected by copyright, trademark, and other intellectual
-                    property laws. You may not reproduce, distribute, or create derivative works from any content on
-                    this website without our express written permission.
-                  </p>
+                  <h3 className="text-xl font-semibold text-white mb-2">{t('copyright.title')}</h3>
+                  <p>{t('copyright.text', { year: currentYear })}</p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Third-Party Links</h3>
-                  <p>
-                    Our website may contain links to third-party websites. These links are provided for your convenience
-                    only. We have no control over the content of these websites and accept no responsibility for them or
-                    for any loss or damage that may arise from your use of them.
-                  </p>
+                  <h3 className="text-xl font-semibold text-white mb-2">{t('thirdParty.title')}</h3>
+                  <p>{t('thirdParty.text')}</p>
                 </div>
 
                 <div className="pt-6 border-t border-gray-700">
                   <p className="text-sm text-gray-400">
-                    <strong>Last updated:</strong> January 2025
+                    <strong>Last updated:</strong> {t('lastUpdated')}
                   </p>
                 </div>
               </div>
@@ -137,8 +121,6 @@ export default function ImprintPage() {
           </div>
         </div>
       </div>
-
-      
     </div>
   )
 }
